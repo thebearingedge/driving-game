@@ -72,8 +72,8 @@ document.addEventListener('keydown', ({ key }) => {
   if (key in keyMap && viper.isStarted) {
     return viper.turn(keyMap[key])
   }
-  if (key === ' ' && viper.isStarted) {
-    return viper.stop()
-  }
-  viper.start()
+  if (key !== ' ') return
+  viper.isStarted
+    ? viper.stop()
+    : viper.start()
 })
