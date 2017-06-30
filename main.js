@@ -6,9 +6,23 @@ document.body.appendChild($car)
 
 class Car {
   constructor($marker, direction, speed, location) {
-    $marker.classList.add(direction)
     this.$marker = $marker
     this.direction = direction
+    this.speed = speed
     this.location = location
+    $marker.classList.add(direction)
+    const [ x, y ] = location
+    $marker.style.left = x + 'px'
+    $marker.style.top = y + 'px'
+  }
+  move() {
+    const { $marker, direction, speed, location } = this
+    switch (direction) {
+      case 'east':
+        location[0] += speed
+    }
+    const [ x, y ] = location
+    $marker.style.left = x + 'px'
+    $marker.style.top = y + 'px'
   }
 }
