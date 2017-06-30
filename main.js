@@ -22,6 +22,15 @@ class Car {
     switch (direction) {
       case 'east':
         location[0] += speed
+        break
+      case 'south':
+        location[1] += speed
+        break
+      case 'west':
+        location[0] -= speed
+        break
+      case 'north':
+        location[1] -= speed
     }
     const [ x, y ] = location
     $marker.style.left = x + 'px'
