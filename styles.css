@@ -1,4 +1,8 @@
 .car {
+  position: fixed;
   width: 120px;
+}
+
+.east {
   transform: rotate(90deg);
 }
