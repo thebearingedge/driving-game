@@ -42,7 +42,7 @@ const viper = new Car($car, 'east', 5, [0, 0])
 
 document.body.appendChild($car)
 document.addEventListener('keydown', ({ key }) => {
-  if (key === ' ') {
-    viper.start()
-  }
+  if (key !== ' ') return
+  if (viper.isStarted) return viper.stop()
+  viper.start()
 })
