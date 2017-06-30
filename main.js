@@ -4,10 +4,11 @@ class Car {
     this.direction = direction
     this.speed = speed
     this.location = location
-    $marker.classList.add(direction)
+    this.interval = null
     const [ x, y ] = location
     $marker.style.left = x + 'px'
     $marker.style.top = y + 'px'
+    $marker.classList.add(direction)
   }
   move() {
     const { $marker, direction, speed, location } = this
@@ -24,6 +25,13 @@ class Car {
       this.move()
     }, 16)
   }
+  stop() {
+    clearInterval(this.interval)
+    this.interval = null
+  }
+  get isStarted() {
+    return !!this.interval
+  }
 }
 
 const $car = document.createElement('img')
@@ -34,7 +42,7 @@ const viper = new Car($car, 'east', 5, [0, 0])
 
 document.body.appendChild($car)
 document.addEventListener('keydown', ({ key }) => {
-  if (key === ' ') {
-    viper.start()
-  }
+  if (key !== ' ') return
+  if (viper.isStarted) return viper.stop()
+  viper.start()
 })
