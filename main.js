@@ -60,9 +60,20 @@ $car.setAttribute('class', 'car')
 
 const viper = new Car($car, 'east', 5, [0, 0])
 
+const keyMap = {
+  'ArrowUp': 'north',
+  'ArrowRight': 'east',
+  'ArrowDown': 'south',
+  'ArrowLeft': 'west'
+}
+
 document.body.appendChild($car)
 document.addEventListener('keydown', ({ key }) => {
-  if (key !== ' ') return
-  if (viper.isStarted) return viper.stop()
+  if (key in keyMap) {
+    return viper.turn(keyMap[key])
+  }
+  if (key === ' ' && viper.isStarted) {
+    return viper.stop()
+  }
   viper.start()
 })
