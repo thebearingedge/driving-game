@@ -1,9 +1,3 @@
-const $car = document.createElement('img')
-$car.setAttribute('src', 'images/viper.png')
-$car.setAttribute('class', 'car')
-
-document.body.appendChild($car)
-
 class Car {
   constructor($marker, direction, speed, location) {
     this.$marker = $marker
@@ -31,3 +25,16 @@ class Car {
     }, 16)
   }
 }
+
+const $car = document.createElement('img')
+$car.setAttribute('src', 'images/viper.png')
+$car.setAttribute('class', 'car')
+
+const viper = new Car($car, 'east', 5, [0, 0])
+
+document.body.appendChild($car)
+document.addEventListener('keydown', ({ key }) => {
+  if (key === ' ') {
+    viper.start()
+  }
+})
