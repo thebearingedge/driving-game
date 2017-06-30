@@ -4,10 +4,11 @@ class Car {
     this.direction = direction
     this.speed = speed
     this.location = location
-    $marker.classList.add(direction)
+    this.interval = null
     const [ x, y ] = location
     $marker.style.left = x + 'px'
     $marker.style.top = y + 'px'
+    $marker.classList.add(direction)
   }
   move() {
     const { $marker, direction, speed, location } = this
@@ -23,6 +24,10 @@ class Car {
     this.interval = setInterval(() => {
       this.move()
     }, 16)
+  }
+  stop() {
+    clearInterval(this.interval)
+    this.interval = null
   }
   get isStarted() {
     return !!this.interval
