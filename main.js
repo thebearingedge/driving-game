@@ -24,6 +24,9 @@ class Car {
       this.move()
     }, 16)
   }
+  get isStarted() {
+    return !!this.interval
+  }
 }
 
 const $car = document.createElement('img')
