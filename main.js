@@ -1,3 +1,10 @@
+const rotations = {
+  north: 0,
+  east: 90,
+  south: 180,
+  west: 270
+}
+
 class Car {
   constructor($marker, direction, speed, location) {
     this.$marker = $marker
@@ -8,7 +15,7 @@ class Car {
     const [ x, y ] = location
     $marker.style.left = x + 'px'
     $marker.style.top = y + 'px'
-    $marker.classList.add(direction)
+    $marker.style.transform = 'rotate(' + rotations[direction] + 'deg)'
   }
   move() {
     const { $marker, direction, speed, location } = this
@@ -31,6 +38,10 @@ class Car {
   }
   get isStarted() {
     return !!this.interval
+  }
+  turn(direction) {
+    this.direction = direction
+    this.$marker.style.transform = 'rotate(' + rotations[direction] + 'deg)'
   }
 }
 
