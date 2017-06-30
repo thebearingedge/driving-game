@@ -25,4 +25,9 @@ class Car {
     $marker.style.left = x + 'px'
     $marker.style.top = y + 'px'
   }
+  start() {
+    this.interval = setInterval(() => {
+      this.move()
+    }, 16)
+  }
 }
