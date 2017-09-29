@@ -56,11 +56,11 @@ class Car {
     $marker.style.left = x + 'px'
     $marker.style.top = y + 'px'
 
-    const { isStarted, topSpeed, acceleration } = this
+    const { isStarted, topSpeed, acceleration, traction } = this
 
-    if (isStarted && isAccelerating) {
-      this.currentSpeed = Math.min(topSpeed, currentSpeed + acceleration)
-    }
+    this.currentSpeed = isStarted && isAccelerating
+      ? Math.min(topSpeed, currentSpeed + acceleration)
+      : Math.max(0, currentSpeed - traction)
   }
   start() {
     this.interval = setInterval(() => {
