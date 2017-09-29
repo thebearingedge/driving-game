@@ -10,7 +10,8 @@ class Car {
     this.$marker = $marker
     this.direction = direction
     this.location = location
-    this.interval = null
+    this.lastInterval = null
+    this.currentInterval = null
     this.topSpeed = 5
     this.currentSpeed = 0
     this.acceleration = 0.1
@@ -63,14 +64,18 @@ class Car {
   }
   start() {
     this.isStarted = true
-    this.interval = setInterval(() => {
+    if (this.lastInterval) clearInterval(this.lastInterval)
+    const newInterval = this.currentInterval = setInterval(() => {
+      if (newInterval !== this.currentInterval) {
+        clearInterval(newInterval)
+      }
       this.update()
     }, 16)
   }
   stop() {
+    this.coast()
     this.isStarted = false
-    clearInterval(this.interval)
-    this.interval = null
+    this.lastInterval = this.currentInterval
   }
   turn(direction) {
     this.direction = direction
