@@ -55,9 +55,9 @@ class Car {
     $marker.style.left = x + 'px'
     $marker.style.top = y + 'px'
 
-    const { isStarted, topSpeed, acceleration, traction } = this
+    const { topSpeed, acceleration, traction } = this
 
-    this.currentSpeed = isStarted && isAccelerating
+    this.currentSpeed = isAccelerating
       ? Math.min(topSpeed, currentSpeed + acceleration)
       : Math.max(0, currentSpeed - traction)
   }
