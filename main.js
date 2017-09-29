@@ -14,7 +14,7 @@ class Car {
     this.topSpeed = 5
     this.currentSpeed = 0
     this.acceleration = 0.1
-    this.traction = 0.1
+    this.traction = 0.05
     this.isAccelerating = false
     const [ x, y ] = location
     $marker.style.left = x + 'px'
@@ -28,15 +28,11 @@ class Car {
     this.isAccelerating = false
   }
   update() {
-    const {
-      $marker,
-      location,
-      direction,
-      currentSpeed,
-      isAccelerating
-    } = this
+    const { currentSpeed, isAccelerating } = this
 
     if (!currentSpeed && !isAccelerating) return
+
+    const { direction, location } = this
 
     switch (direction) {
       case 'east':
@@ -51,7 +47,9 @@ class Car {
       case 'north':
         location[1] -= currentSpeed
     }
+
     const [ x, y ] = location
+    const { $marker } = this
 
     $marker.style.left = x + 'px'
     $marker.style.top = y + 'px'
