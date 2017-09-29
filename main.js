@@ -27,7 +27,16 @@ class Car {
     this.isAccelerating = false
   }
   update() {
-    const { $marker, direction, currentSpeed, location } = this
+    const {
+      $marker,
+      location,
+      direction,
+      currentSpeed,
+      isAccelerating
+    } = this
+
+    if (!currentSpeed && !isAccelerating) return
+
     switch (direction) {
       case 'east':
         location[0] += currentSpeed
