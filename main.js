@@ -19,6 +19,9 @@ class Car {
     $marker.style.top = y + 'px'
     $marker.style.transform = 'rotate(' + rotations[direction] + 'deg)'
   }
+  accelerate() {
+    this.isAccelerating = true
+  }
   move() {
     const { $marker, direction, speed, location } = this
     switch (direction) {
