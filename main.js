@@ -15,6 +15,7 @@ class Car {
     this.currentSpeed = 0
     this.acceleration = 0.1
     this.traction = 0.05
+    this.isStarted = false
     this.isAccelerating = false
     const [ x, y ] = location
     $marker.style.left = x + 'px'
@@ -61,16 +62,15 @@ class Car {
       : Math.max(0, currentSpeed - traction)
   }
   start() {
+    this.isStarted = true
     this.interval = setInterval(() => {
       this.update()
     }, 16)
   }
   stop() {
+    this.isStarted = false
     clearInterval(this.interval)
     this.interval = null
-  }
-  get isStarted() {
-    return !!this.interval
   }
   turn(direction) {
     this.direction = direction
