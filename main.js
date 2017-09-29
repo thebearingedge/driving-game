@@ -22,6 +22,9 @@ class Car {
   accelerate() {
     this.isAccelerating = true
   }
+  decelerate() {
+    this.isAccelerating = false
+  }
   move() {
     const { $marker, direction, speed, location } = this
     switch (direction) {
