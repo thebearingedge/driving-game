@@ -24,7 +24,7 @@ class Car {
   accelerate() {
     this.isAccelerating = true
   }
-  decelerate() {
+  coast() {
     this.isAccelerating = false
   }
   update() {
@@ -104,5 +104,5 @@ document.addEventListener('keydown', ({ key }) => {
   if (key === ' ') viper.accelerate()
 })
 document.addEventListener('keyup', ({ key }) => {
-  if (key === ' ') viper.decelerate()
+  if (key === ' ') viper.coast()
 })
