@@ -14,6 +14,7 @@ class Car {
     this.topSpeed = 5
     this.currentSpeed = 0
     this.acceleration = 0.1
+    this.traction = 0.1
     this.isAccelerating = false
     const [ x, y ] = location
     $marker.style.left = x + 'px'
