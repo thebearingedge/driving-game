@@ -25,7 +25,7 @@ class Car {
   decelerate() {
     this.isAccelerating = false
   }
-  move() {
+  update() {
     const { $marker, direction, currentSpeed, location } = this
     switch (direction) {
       case 'east':
@@ -46,7 +46,7 @@ class Car {
   }
   start() {
     this.interval = setInterval(() => {
-      this.move()
+      this.update()
     }, 16)
   }
   stop() {
