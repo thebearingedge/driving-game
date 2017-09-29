@@ -23,7 +23,7 @@ class Car {
     $marker.style.transform = 'rotate(' + rotations[direction] + 'deg)'
   }
   accelerate() {
-    this.isAccelerating = true
+    this.isAccelerating = this.isStarted
   }
   coast() {
     this.isAccelerating = false
