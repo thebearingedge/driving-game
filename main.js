@@ -6,13 +6,13 @@ const rotations = {
 }
 
 class Car {
-  constructor($marker, direction, speed, location) {
+  constructor($marker, direction, location) {
     this.$marker = $marker
     this.direction = direction
-    this.speed = speed
     this.location = location
     this.interval = null
     this.topSpeed = 5
+    this.currentSpeed = 0
     this.isAccelerating = false
     const [ x, y ] = location
     $marker.style.left = x + 'px'
@@ -26,19 +26,19 @@ class Car {
     this.isAccelerating = false
   }
   move() {
-    const { $marker, direction, speed, location } = this
+    const { $marker, direction, currentSpeed, location } = this
     switch (direction) {
       case 'east':
-        location[0] += speed
+        location[0] += currentSpeed
         break
       case 'south':
-        location[1] += speed
+        location[1] += currentSpeed
         break
       case 'west':
-        location[0] -= speed
+        location[0] -= currentSpeed
         break
       case 'north':
-        location[1] -= speed
+        location[1] -= currentSpeed
     }
     const [ x, y ] = location
     $marker.style.left = x + 'px'
@@ -66,7 +66,7 @@ const $car = document.createElement('img')
 $car.setAttribute('src', 'images/viper.png')
 $car.setAttribute('class', 'car')
 
-const viper = new Car($car, 'east', 5, [0, 0])
+const viper = new Car($car, 'east', [0, 0])
 
 const directions = {
   'ArrowUp': 'north',
