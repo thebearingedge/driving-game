@@ -13,7 +13,7 @@ class Car {
     this.interval = null
     this.topSpeed = 5
     this.currentSpeed = 0
-    this.acceleration = 1
+    this.acceleration = 0.1
     this.isAccelerating = false
     const [ x, y ] = location
     $marker.style.left = x + 'px'
@@ -51,8 +51,15 @@ class Car {
         location[1] -= currentSpeed
     }
     const [ x, y ] = location
+
     $marker.style.left = x + 'px'
     $marker.style.top = y + 'px'
+
+    const { isStarted, topSpeed, acceleration } = this
+
+    if (isStarted && isAccelerating) {
+      this.currentSpeed = Math.min(topSpeed, currentSpeed + acceleration)
+    }
   }
   start() {
     this.interval = setInterval(() => {
