@@ -12,6 +12,8 @@ class Car {
     this.speed = speed
     this.location = location
     this.interval = null
+    this.topSpeed = 5
+    this.isAccelerating = false
     const [ x, y ] = location
     $marker.style.left = x + 'px'
     $marker.style.top = y + 'px'
